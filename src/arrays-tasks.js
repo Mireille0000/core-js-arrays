@@ -403,8 +403,8 @@ function findAllOccurrences(arr, item) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.toString();
 }
 
 /**
@@ -433,8 +433,21 @@ function toStringList(/* arr */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  const values = arr.reduce((acc, _, index, array) => {
+    acc.push(Object.values(array[index]));
+    return acc;
+  }, []);
+
+  const sortedValues = values.sort();
+
+  const obj = sortedValues.map((item) =>
+    item.reduce((object, v, i, array) => {
+      return { ...object, country: array[0], city: array[1] };
+    }, {})
+  );
+
+  return obj;
 }
 
 /**
