@@ -285,8 +285,8 @@ function toStringList(arr) {
  *   distinct([]) => []
  */
 
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -318,8 +318,13 @@ function createNDimensionalArray(/* n, size */) {
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
 
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  const isObject = (item) => typeof item === 'object';
+
+  if (!nestedArray.some(isObject)) {
+    return nestedArray;
+  }
+  return flattenArray(nestedArray.flat());
 }
 
 /**
