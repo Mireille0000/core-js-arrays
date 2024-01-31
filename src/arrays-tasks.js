@@ -430,7 +430,7 @@ function getFalsyValuesCount(/* arr */) {
 }
 
 /**
- * Returns a number of all occurrences of the specified item in an array
+ * Creates an identity matrix of the specified size.
  *
  * @param {number} n - A size of the matrix.
  * @return {array} - An identity matrix.
@@ -464,8 +464,10 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
 
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers
+    .filter((number) => number % 2 !== 0)
+    .map((odd) => numbers.indexOf(odd));
 }
 
 /**
@@ -513,8 +515,10 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1
+    .concat(arr2)
+    .filter((item, index, arr) => arr.indexOf(item) !== index);
 }
 
 /**
