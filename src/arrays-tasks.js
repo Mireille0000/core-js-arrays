@@ -431,8 +431,12 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  return arr.reduce((acc, item) => {
+    let accum = acc;
+    if (!item) accum += 1;
+    return accum;
+  }, 0);
 }
 
 /**
@@ -487,8 +491,10 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([]) => []
  */
 
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map(
+    (item) => `#${item.toString(16).padStart(6, '0').toUpperCase()}`
+  );
 }
 
 /**
