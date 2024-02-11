@@ -38,8 +38,24 @@ function getIntervalArray(start, end) {
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
 
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const resultArr = arr1.concat(arr2);
+  if (arr1.length === 0 || arr2.length === 0) {
+    return resultArr;
+  }
+  const lastItem = [];
+  if (resultArr.length % 2 !== 0) {
+    lastItem.push(resultArr.pop());
+  }
+
+  return resultArr
+    .reduce((acc, _, index) => {
+      if (resultArr[index + 3]) {
+        acc.push(resultArr[index] + resultArr[index + 3]);
+      }
+      return acc;
+    }, [])
+    .concat(lastItem);
 }
 
 /**
